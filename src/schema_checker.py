@@ -1,6 +1,7 @@
 import argparse
 import xmltodict
 
+
 def main(args=None):
     p=make_parser()
     ns=p.parse_args(args=args)
@@ -9,12 +10,18 @@ def main(args=None):
         sim=xmltodict.parse(f)
 
     inst_facilities=set()
+
+    # nullinst
     for item in dict_extract("initialfacilitylist",sim):
         if type(item['entry']) is dict:
             inst_facilities.add(item['entry']['prototype'])
         else:
             for entry in item['entry']:
                 inst_facilities.add(entry['prototype'])
+    # deployinst
+    for item in dict_extract("DeployInst",sim):
+        for entry in item['prototypes']:
+            inst_facilities.add(entry['val'])
 
     defined_facilities = {fac["name"] for fac in sim["simulation"]["facility"]}
 
