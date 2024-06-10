@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cyclus-sc"
+dynamic = ["version"]
+description = "Tool to check if all prototypes in a cyclus simulation have been deployed by NullInst or DeployInst"
+readme = "README.md"
+license = "LICENSE.txt"
+authors = [
+    { name = "Katie Mummah", email = "katiemummah@gmail.com" },
+]
+
+[project.scripts]
+cyclus-sc = "src.schema_checker:main"
+
+[tool.hatch.version]
+path = "src/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+]
+

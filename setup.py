@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as f:
     long_description = f.read()
 
-setup(name="cyclussc",
+setup(name="cyclus-sc",
       version='0.1',
       description='Tool to check if all prototypes in a cyclus simulation have been deployed by NullInst',
       long_description_content_type="text/markdown",
